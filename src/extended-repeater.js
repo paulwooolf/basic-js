@@ -17,12 +17,64 @@ const CustomError = require("../extensions/custom-error");
 //
 // Единственный обязательный параметр — это str, остальные могут не быть переданы. Значение separator по умолчанию это '+'. Значение additionSeparator по умолчанию это '|'.
 
-module.exports = function repeater(str, options = {
-    repeatTimes: 0,
-    separator: '+',
-    addition: '',
-    additionRepeatTimes: 0,
-    additionSeparator: '|'
+module.exports = function repeater(str, {
+    repeatTimes = 1,
+    separator = '+',
+    addition = undefined,
+    additionRepeatTimes = 0,
+    additionSeparator = undefined
 }) {
+    str = String(str);
+    addition = String(addition);
+    const newStr = [];
+    for (let i = 0; i < repeatTimes; i++) {
+        newStr.push(str);
+        if (addition !== undefined) {
+            for (let j = 0; j < additionRepeatTimes; j++) {
+                if (addition !== '') {
+                    newStr.push(addition);
+                    if (additionSeparator !== undefined) {
+                        newStr.push(additionSeparator);
+                    }
+                }
+            }
+        }
+        if (i + 1 < repeatTimes || (i + 1 === repeatTimes && separator !== '+')) {
+            newStr.push(separator);
+        }
+    }
 
+    return newStr.join('');
 };
+
+// function repeater(str, {
+//     repeatTimes = 1,
+//     separator = '+',
+//     addition = '',
+//     additionRepeatTimes = 0,
+//     additionSeparator = ''
+// }) {
+//     const newStr = [];
+//     for (let i = 0; i < repeatTimes; i++) {
+//         newStr.push(str);
+//         if (addition !== undefined) {
+//             for (let j = 0; j < additionRepeatTimes; j++) {
+//                 if (addition !== '') {
+//                     newStr.push(addition);
+//                     if (additionSeparator !== undefined) {
+//                         newStr.push(additionSeparator);
+//                     }
+//                 }
+//             }
+//         }
+//         if (i + 1 < repeatTimes) {
+//             newStr.push(separator);
+//         }
+//     }
+//
+//     return newStr.join('');
+// };
+
+// console.log(repeater('la', { repeatTimes: 3 }), 'la+la+la');
+// console.log(repeater('single', { repeatTimes: 1 }), 'single');
+// console.log(repeater('12345', { repeatTimes: 5 }), '12345+12345+12345+12345+12345');
