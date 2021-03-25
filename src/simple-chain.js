@@ -11,11 +11,11 @@ const chainMaker = {
         return this;
     },
     removeLink(position) {
-        if (this.line[position] === undefined) {
+        if (Number.isInteger(position) === false) {
             this.line = [];
             throw new Error();
         }
-        this.line.splice(position, 1);
+        this.line.splice(position-1, 1);
         return this;
     },
     reverseChain() {
