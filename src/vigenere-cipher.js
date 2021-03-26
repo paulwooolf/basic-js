@@ -65,11 +65,4 @@ class VigenereCipheringMachine {
     }
 }
 
-// const machine = new VigenereCipheringMachine(true);
-// console.log(machine.encrypt('5,,,!', 'js'));
-// console.log(machine.decrypt('5,,,!', 'js'));
-// console.log(machine.decrypt('ICWWQAM KECEIK JVZZT EADGG!', 'rollingscopes'), 'ROLLING SCOPES SHOOL RULES!');
-// console.log(machine.decrypt('TRVVFB VT JSUIFMYL!', 'learning'), 'INVEST IN YOURSELF!');
-// console.log(machine.decrypt('HSVD AJAL ^^', 'behappy'), 'GOOD LUCK ^^');
-
 module.exports = VigenereCipheringMachine;
