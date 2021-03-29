@@ -18,8 +18,8 @@ class VigenereCipheringMachine {
         let newKey = key.split('');
 
         let crypt = [];
-        message.split('').forEach((item) => {
-            if (item.charCodeAt(0) > 64 && item.charCodeAt(0) < 91) {
+        message.split('').forEach(item => {
+            if (item.charCodeAt(0) >= 65 && item.charCodeAt(0) <= 90) {
                 let k = newKey.shift();
                 crypt.push(String.fromCharCode(((item.charCodeAt(0) + k.charCodeAt(0)) % 26) + 65))
             } else {
@@ -41,8 +41,8 @@ class VigenereCipheringMachine {
         }
         let newKey = key.split('');
         let crypt = [];
-        message.split('').forEach((item) => {
-            if (item.charCodeAt(0) > 64 && item.charCodeAt(0) < 91) {
+        message.split('').forEach(item => {
+            if (item.charCodeAt(0) >= 65 && item.charCodeAt(0) <= 90) {
                 let k = newKey.shift();
                 crypt.push(String.fromCharCode(((item.charCodeAt(0) + 26 - k.charCodeAt(0)) % 26) + 65))
             } else {
